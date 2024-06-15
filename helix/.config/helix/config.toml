@@ -1,13 +1,28 @@
-theme = "everforest_dark"
-
+theme = "everforest_dark_transparent" # custom theme
 [editor]
-bufferline = "multiple"
-cursorline = true
-line-number = "relative"
-rulers = [120]
-true-color = true
-mouse = true
-scrolloff = 10
+shell = ["nu"]
+auto-save = true
+preview-completion-insert = true
+bufferline = "always"
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+center = ["version-control"]
+left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+
+[editor.indent-guides]
+character = "⸽" # Some characters that work well: "▏", "┆", "┊", "⸽"
+render = true
+
+[editor.whitespace.render]
+tab = "all"
+tabpad = "all"
+newline = "none"
+
+[editor.lsp]
+display-inlay-hints = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -16,30 +31,27 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
-parents = false
-git-ignore = false
-
-[editor.whitespace]
-render = "all"
-
-[editor.lsp]
-display-inlay-hints = false
-
-[editor.statusline]
-left = ["mode", "spinner", "version-control"]
-center = ["file-name"]
-right = [ "diagnostics",
-  "selections",
-  "position",
-  "file-encoding",
-  "file-line-ending",
-  "file-type",
-]
-separator = "│"
-mode.normal = "NORMAL"
-mode.insert = "INSERT"
-mode.select = "SELECT"
 
 [keys.normal]
-y = "yank_main_selection_to_clipboard"
-p = "paste_clipboard_before"
+"C-s" = ":w" # Ctrl-s saves the current file 
+down = "no_op" # disable down arrow
+up = "no_op" # disable up arrow
+y = "yank_main_selection_to_clipboard" # y yanks selection to clipboard
+p = "paste_clipboard_before" # p pastes clipboard before 
+"ret" = ["open_below", "normal_mode"] # Enter adds line above
+
+# Modified keybindings in Insert mode
+[keys.insert]
+# left = "no_op"
+# right = "no_op"
+down = "no_op" # disable down arrow
+up = "no_op" # disable up arrow
+"A-h" = "move_char_left" # Alt-h moves cursor up
+"A-l" = "move_char_right" # Alt-l moves cursor right
+"A-k" = "move_line_up" # Alt-k moves cursor up
+"A-j" = "move_line_down" # Alt-j moves cursor down
+j = { k = "normal_mode" } # jk to enter Normal mode
+
+[keys.select]
+y = "yank_main_selection_to_clipboard" # y yanks selection to clipboard
+p = "paste_clipboard_before" # p pastes clipboard before
