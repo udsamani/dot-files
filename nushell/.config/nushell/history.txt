@@ -1,0 +1,5 @@
+hx ~/.config/nushell/config.nu
+hx ~/.config/nushell/env.nu
+zsh
+bash
+exit
