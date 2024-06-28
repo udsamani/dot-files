@@ -1,6 +1,6 @@
 export-env {
     $env.POWERLINE_COMMAND = 'oh-my-posh'
-    $env.POSH_THEME = "/Users/ud/.dotfiles/oh-my-posh/.config/oh-my-posh/themes/quick-term.omp.json"
+    $env.POSH_THEME = "/Users/ud/.dotfiles/oh-my-posh/.config/oh-my-posh/themes/iterm2.omp.json"
     $env.PROMPT_INDICATOR = ""
     $env.POSH_PID = (random uuid)
     # By default displays the right prompt on the first line
