@@ -143,7 +143,7 @@ keys = {
 	window_decorations = "RESIZE",
 	window_background_opacity = 0.8,
 
-	default_prog = {'/opt/homebrew/bin/nu', '--config', '/Users/ud/.config/nushell/config.nu'}
+	default_prog = {'/opt/homebrew/bin/tmux'}
 
 
 }
