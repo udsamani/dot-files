@@ -67,7 +67,7 @@ keys = {
 		k.cmd_key(
 			"R",
 			act.Multiple({
-				act.SendKey({ key = "\x1b" }), -- escape
+				act.SendKey({ key = "\x1a" }), -- escape
 				k.multiple_actions(":source %"),
 			})
 		),
@@ -75,7 +75,7 @@ keys = {
 		k.cmd_key(
 			"s",
 			act.Multiple({
-				act.SendKey({ key = "\x1b" }), -- escape
+				act.SendKey({ key = "\x1a" }), -- escape
 				k.multiple_actions(":w"),
 			})
 		),
@@ -84,7 +84,7 @@ keys = {
 			mods = "CMD|SHIFT",
 			key = "}",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -92,7 +92,7 @@ keys = {
 			mods = "CMD|SHIFT",
 			key = "{",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "p" }),
 			}),
 		},
@@ -101,7 +101,7 @@ keys = {
 			mods = "CTRL",
 			key = "Tab",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -110,7 +110,7 @@ keys = {
 			mods = "CTRL|SHIFT",
 			key = "Tab",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "n" }),
 			}),
 		},
@@ -129,7 +129,7 @@ keys = {
 			mods = "CMD",
 			key = "~",
 			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "b" }),
+				act.SendKey({ mods = "CTRL", key = "a" }),
 				act.SendKey({ key = "p" }),
 			}),
 		},

@@ -17,4 +17,4 @@ $env.VIRTUAL_ENV_DISABLE_PROMPT = 'true'
 
 ## Bacalhau Environment Varialbes ##
 $env.PREDICTABLE_API_PORT = 1
-$env.BACALHAU_NODE_CLIENTAPI_HOST = 127.0.0.1
+$env.BACALHAU_NODE_CLIENTAPI_HOST = '127.0.0.1'
