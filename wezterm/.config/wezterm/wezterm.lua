@@ -1,9 +1,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 local k = require("utils/keys")
-
-
-local dark_opacity = 0.1
+ local dark_opacity = 0.1
 local light_opacity = 0.9
 
 local config = {
@@ -11,7 +9,7 @@ local config = {
   font_size = 14,
 
   font = wezterm.font_with_fallback({
-    "ComicShannsMono Nerd Font",
+    "MonoLisa Nerd Font Mono",
   }),
 
   window_padding = {
@@ -79,42 +77,6 @@ keys = {
 				k.multiple_actions(":w"),
 			})
 		),
-
-		{
-			mods = "CMD|SHIFT",
-			key = "}",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "a" }),
-				act.SendKey({ key = "n" }),
-			}),
-		},
-		{
-			mods = "CMD|SHIFT",
-			key = "{",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "a" }),
-				act.SendKey({ key = "p" }),
-			}),
-		},
-
-		{
-			mods = "CTRL",
-			key = "Tab",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "a" }),
-				act.SendKey({ key = "n" }),
-			}),
-		},
-
-		{
-			mods = "CTRL|SHIFT",
-			key = "Tab",
-			action = act.Multiple({
-				act.SendKey({ mods = "CTRL", key = "a" }),
-				act.SendKey({ key = "n" }),
-			}),
-		},
-
 		-- FIX: disable binding
 		-- {
 		-- 	mods = "CMD",

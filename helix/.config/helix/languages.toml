@@ -9,3 +9,16 @@ auto-format = true
 comment-token = "//"
 language-servers = [ "gopls"]
 
+[[language]]
+name = "rust"
+auto-format = true
+roots = [
+  "Cargo.toml",
+  "Cargo.lock"
+]
+formatter = { command = "rustfmt" }
+
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
