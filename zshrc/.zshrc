@@ -60,7 +60,7 @@ alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
 # GO
-export GOPATH='/Users/omerhamerman/go'
+export GOPATH='/Users/ud/go'
 
 # VIM
 alias v="/opt/homebrew/bin/nvim"
@@ -119,6 +119,20 @@ alias mat='osascript -e "tell application \"System Events\" to key code 126 usin
 # Nix!
 export NIX_CONF_DIR=$HOME/.config/nix
 
+# Expanso
+export EXPANSO_AWS_SSO_URL="https://expanso.awsapps.com/start/#"
+export AWS_PROFILE=udit-admin
+export AWS_DEFAULT_REGION=eu-central-1
+export AWS_PAGER=""
+export AWS_CLI_AUTO_PROMPT=off
+
+
+# GoLang
+
+export GOBIN="$HOME/go/bin"
+export GO111MODULE="on"
+
+
 function ranger {
 	local IFS=$'\t\n'
 	local tempfile="$(mktemp -t tmp.XXXXXX)"
@@ -142,4 +156,6 @@ fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
 f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
 fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 eval "$(zoxide init zsh)"
