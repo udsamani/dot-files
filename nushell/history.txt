@@ -3,3 +3,161 @@ hx ~/.config/nushell/env.nu
 zsh
 bash
 exit
+clear
+ls
+k
+env
+env | grep PATH
+clear
+exit
+hx ~/.config/nushell/config.nu
+cat ~/.config/nushell/config.nu
+env
+hx ~/.config/nushell/config.nu
+exit
+clear
+ls
+clear
+env
+$env
+clear
+hx ~/.config/nushell/config.nu
+cd ~/.config/nushell/
+hx ~/.config/nushell/config.nu
+hx env.nu
+exit
+$env
+$env.PATH
+cd ~/.config/nushell/
+clear
+cd ~/.config/nushell/
+ls
+hx env.nu
+exit
+clear
+l
+ls
+clear
+cd ~/.config/nushell/
+clear
+ls
+hx env.nu
+exit
+0 | prepend [1 2 3]
+$env.PATH = ($env.PATH | prepend $"($env.HOME)/.cargo/bin")
+clear
+$env.PATH
+exit
+hx
+which hx
+clear
+which hx
+clear
+exit
+join --help
+($env.PATH | split row ':' | str join ':')
+exit
+clear
+ls
+hx ~/.config/nushell/env.nu
+clear
+which nu
+clear
+$env.PATH
+hx ~/.config/nushell/env.nu
+clear
+exit
+nu
+clear
+ls
+hx ~/.config/wezterm/wezterm.lua
+exit
+nu
+exit
+clear
+hx ~/.config/wezterm/wezterm.lua
+exit
+clear
+ls
+z quant-trader
+clear
+ls
+exit
+ls
+clear
+ls
+clear
+exit
+clear
+ls
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv
+clear
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | index
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | SettlmentQuantity
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | get UUID
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | get UUID, SettlementQuantity
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | select UUID SettlementQuantity
+clear
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | select UUID SettlementQuantity
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv 
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | select DateTime UUID SettlementQuantity
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | select DateTime UUID SettlementQuantity ClientReference
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | select DateTime UUID SettlementQuantity ClientReference | get 1
+clear
+cat Onyx_InternalTradesCII_20241021_07F.csv | from csv | select DateTime UUID SettlementQuantity ClientReference | get 1
+cat Onyx_InternalTradesCII_20241021_08F.csv | from csv | select DateTime UUID SettlementQuantity ClientReference | get 1
+ls
+cat Onyx_InternalTradesCII_20241021_08F.csv | from csv | select DateTime UUID SettlementQuantity ClientReference | get 1
+clear
+k get pods
+exit
+cd /tmp
+hx temp.json
+temp.json | from json
+cat temp.json | from json
+cat temp.json | from json | wher account_name =~ Kishan
+cat temp.json | from json | where account_name =~ Kishan
+cat temp.json | from json | grep Kishan
+cat temp.json | grep kishan
+cat temp.json | grep -i kishan
+cat temp.json | from json | where full_name =~ Kishan
+exit
+cd /tmp
+cat temp.json | from json | where full_name =~ kishan
+cat temp.json | from json | where full_name =~ kishan | select api_token
+exit
+ls
+clear
+z quant-trader
+ks
+ls
+clear
+cd workspace/
+ls
+cd quant-trader/
+git stauts
+git status
+clear
+cd ~/.config/nushell/
+ls
+mkdir scripts
+clear
+ls
+cd scripts/
+clear
+ls
+hx oh-my-v2.nu
+nu oh-my-v2.nu
+ls
+source oh-my-v2.n
+source oh-my-v2.nu
+clear
+source oh-my-v2.nu
+ls
+batcat oh-my-v2.nu
+clcear
+ls
+clear
+lsof
+clear

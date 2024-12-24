@@ -1,139 +1,81 @@
--- local wezterm = require("wezterm")
---
--- local config = {
---
---   font_size = 14,
---
---   font = wezterm.font('CaskaydiaMono NFM', {weight = 'Regular', italic = false}),
---   leader = {
---     key = "a",
---     mods = "CTRL",
---     timeout_milliseconds = 2000
---   },
---
---   window_padding = {
---     left = 40,
---     right = 20,
---     top = 30,
---     bottom = 20,
---   },
---   keys = {
---     {
---       mods = "LEADER",
---       key = "c",
---       action = wezterm.action.SpawnTab "CurrentPaneDomain",
---     },
---     {
---       mods = "LEADER",
---       key = "b",
---       action = wezterm.action.ActivateTabRelative(-1)
---     },
---     {
---       mods = "LEADER",
---       key = "n",
---       action = wezterm.action.ActivateTabRelative(1)
---     },
---     {
---       mods = "LEADER",
---       key = "-",
---       action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" }
---     },
---     {
---       mods = "LEADER",
---       key = "|",
---       action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" }
---     },
---     {
---       mods = "LEADER",
---       key = "h",
---       action = wezterm.action.ActivatePaneDirection "Left"
---     },
---     {
---       mods = "LEADER",
---       key = "l",
---       action = wezterm.action.ActivatePaneDirection "Right"
---     },
---     {
---       mods = "LEADER",
---       key = "j",
---       action = wezterm.action.ActivatePaneDirection "Down"
---     },
---     {
---       mods = "LEADER",
---       key = "k",
---       action = wezterm.action.ActivatePaneDirection "Up"
---     },
---     {
---       mods = "LEADER",
---       key = "LeftArrow",
---       action = wezterm.action.AdjustPaneSize { "Left", 5 }
---     },
---     {
---       mods = "LEADER",
---       key = "RightArrow",
---       action = wezterm.action.AdjustPaneSize { "Right", 5 }
---     },
---     {
---       mods = "LEADER",
---       key = "DownArrow",
---       action = wezterm.action.AdjustPaneSize { "Down", 5 }
---     },
---     {
---       mods = "LEADER",
---       key = "UpArrow",
---       action = wezterm.action.AdjustPaneSize { "Up", 5 }
---     },
---   },
---   adjust_window_size_when_changing_font_size = false,
---   color_scheme = 'Everforest Dark (Gogh)',
--- 	debug_key_events = false,
--- 	enable_tab_bar = false,
--- 	native_macos_fullscreen_mode = false,
--- 	window_close_confirmation = "NeverPrompt",
--- 	window_decorations = "RESIZE",
--- }
---
--- return config
+-- These are the basic's for using wezterm.
+-- Mux is the mutliplexes for windows etc inside of the terminal
+-- Action is to perform actions on the terminal
 local wezterm = require 'wezterm'
-return {
-	-- color_scheme = 'termnial.sexy',
-	color_scheme = 'Catppuccin Mocha',
-  -- color_scheme = 'Everforest Dark (Gogh)',
-	enable_tab_bar = false,
-	font_size = 16.0,
-  font = wezterm.font('CaskaydiaMono NFM', {weight = 'Regular', italic = false}),
-	-- macos_window_background_blur = 40,
-	macos_window_background_blur = 30,
-	
-	-- window_background_image = '/Users/omerhamerman/Downloads/3840x1080-Wallpaper-041.jpg',
-	-- window_background_image_hsb = {
-	-- 	brightness = 0.01,
-	-- 	hue = 1.0,
-	-- 	saturation = 0.5,
-	-- },
-	-- window_background_opacity = 0.92,
-	-- window_background_opacity = 1.0,
-	window_background_opacity = 0.78,
-	-- window_background_opacity = 0.20,
-	window_decorations = 'RESIZE',
-	keys = {
-		{
-			key = 'f',
-			mods = 'CTRL',
-			action = wezterm.action.ToggleFullScreen,
-		},
-		{
-			key = '\'',
-			mods = 'CTRL',
-			action = wezterm.action.ClearScrollback 'ScrollbackAndViewport',
-		},
-	},
-	mouse_bindings = {
-	  -- Ctrl-click will open the link under the mouse cursor
-	  {
-	    event = { Up = { streak = 1, button = 'Left' } },
-	    mods = 'CTRL',
-	    action = wezterm.action.OpenLinkAtMouseCursor,
-	  },
-	},
+local mux = wezterm.mux
+local act = wezterm.action
+
+-- These are vars to put things in later (i dont use em all yet)
+local config = {}
+local keys = {}
+local mouse_bindings = {}
+local launch_menu = {}
+
+-- This is for newer wezterm vertions to use the config builder 
+if wezterm.config_builder then
+  config = wezterm.config_builder()
+end
+
+-- Default config settings
+-- These are the default config settins needed to use Wezterm
+-- Just add this and return config and that's all the basics you need
+
+-- Color scheme, Wezterm has 100s of them you can see here:
+-- https://wezfurlong.org/wezterm/colorschemes/index.html
+config.color_scheme = 'Oceanic Next (Gogh)'
+-- This is my chosen font, we will get into installing fonts on windows later
+config.font = wezterm.font('Hack Nerd Font')
+config.font_size = 11
+config.launch_menu = launch_menu
+-- makes my cursor blink 
+config.default_cursor_style = 'BlinkingBar'
+config.disable_default_key_bindings = true
+-- this adds the ability to use ctrl+v to paste the system clipboard 
+config.keys = {{ key = 'V', mods = 'CTRL', action = act.PasteFrom 'Clipboard' },}
+config.mouse_bindings = mouse_bindings
+
+-- There are mouse binding to mimc Windows Terminal and let you copy
+-- To copy just highlight something and right click. Simple
+mouse_bindings = {
+  {
+    event = { Down = { streak = 3, button = 'Left' } },
+    action = wezterm.action.SelectTextAtMouseCursor 'SemanticZone',
+    mods = 'NONE',
+  },
+ {
+  event = { Down = { streak = 1, button = "Right" } },
+  mods = "NONE",
+  action = wezterm.action_callback(function(window, pane)
+   local has_selection = window:get_selection_text_for_pane(pane) ~= ""
+   if has_selection then
+    window:perform_action(act.CopyTo("ClipboardAndPrimarySelection"), pane)
+    window:perform_action(act.ClearSelection, pane)
+   else
+    window:perform_action(act({ PasteFrom = "Clipboard" }), pane)
+   end
+  end),
+ },
+>>>>>>> d09c011 (feat: best config)
 }
+
+-- This is used to make my foreground (text, etc) brighter than my background
+config.foreground_text_hsb = {
+  hue = 1.0,
+  saturation = 1.2,
+  brightness = 1.5,
+}
+
+-- This is used to set an image as my background 
+config.background = {
+    {
+        source = { File = {path = 'C:/Users/someuserboi/Pictures/Backgrounds/theone.gif', speed = 0.2}},
+ opacity = 1,
+ width = "100%",
+ hsb = {brightness = 0.5},
+    }
+}
+
+-- IMPORTANT: Sets WSL2 UBUNTU-22.04 as the defualt when opening Wezterm
+config.default_domain = 'WSL:Ubuntu-22.04'
+
+return config
